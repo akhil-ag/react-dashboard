@@ -15,14 +15,14 @@ const postRoute = require('../backend/routes/post.route')
   
 // Connecting MongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db).then(() => {
+mongoose.connect("mongodb+srv://mongodb:mongodb@cluster0.eerzkb8.mongodb.net/?retryWrites=true&w=majority").then(() => {
   console.log('Database successfully connected!')
 },
   error => {
     console.log('Could not connect to database : ' + error)
   }
 )
-  
+   
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -48,3 +48,9 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });
+
+
+
+// app.listen(port, () => {
+//     console.log(`Server is running on port: ${port}`);
+// });
