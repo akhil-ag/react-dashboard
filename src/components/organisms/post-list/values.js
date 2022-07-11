@@ -14,7 +14,7 @@ export const getPostData = (post_type) => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:4000/posts/get-postlist/" + post_type)
+            .get("http://11.0.244.174:4000/posts/get-postlist/" + post_type)
             .then(({ data }) => {
                 setPosts(data);
             })

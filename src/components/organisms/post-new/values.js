@@ -12,7 +12,7 @@ export const getPostId=(props)=> {
     const [post_id, setPostId] = useState(1);
     useEffect(() => {
         axios
-            .get("http://localhost:4000/posts/get-postid")
+            .get("http://11.0.244.174:4000/posts/get-postid")
             .then(({ data }) => {
                 setPostId(data);
             })

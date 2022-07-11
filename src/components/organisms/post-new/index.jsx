@@ -29,7 +29,7 @@ function NewPost(props) {
             let meta_key = key;
             let meta_value = value;
             axios.post(
-                'http://localhost:4000/posts/new-post',
+                'http://11.0.244.174:4000/posts/new-post',
                 { post_id, meta_key, meta_value })
                 .then(res => {
                     if (res.status === 200)

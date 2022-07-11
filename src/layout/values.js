@@ -38,7 +38,7 @@ export const getPostTypeDb = (props) => {
     const [post_type, setPostType] = useState('accordian');
     useEffect(() => {
         axios
-            .get("http://localhost:4000/posts/get-posttype/" + props)
+            .get("http://11.0.244.174:4000/posts/get-posttype/" + props)
             .then(({ data }) => {
                 setPostType(data)
             })

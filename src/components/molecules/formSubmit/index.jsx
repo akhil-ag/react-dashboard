@@ -14,7 +14,7 @@ export default function formSubmit(props) {
             let meta_key = key;
             let meta_value = value;
             // console.log(meta_key + ' - ' + meta_value)
-            axios.put("http://localhost:4000/posts/update-post/" + props.post_id,
+            axios.put("http://11.0.244.174:4000/posts/update-post/" + props.post_id,
                 { meta_key, meta_value }
             )
                 .then((res) => {
@@ -29,7 +29,7 @@ export default function formSubmit(props) {
 
     const handleOnDelete = async (e) => {
         e.preventDefault();
-        axios.delete("http://localhost:4000/posts/delete-post/" + props.post_id)
+        axios.delete("http://11.0.244.174:4000/posts/delete-post/" + props.post_id)
             .then((res) => {
                 if (res.status === 200) {
                     // alert("post successfully deleted");
