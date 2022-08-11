@@ -12,36 +12,23 @@ function NewPost(props) {
     const navigate = useNavigate();
     const data = getPostFields(props.type)
     const [values, setValues] = useState({});
+    var currentdate = new Date();
+    var datetime =currentdate.getDay() + "-" + currentdate.getMonth() 
+    + "-" + currentdate.getFullYear() + " " 
+    + currentdate.getHours() + ":" 
+    + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
     const fieldChanged = (fieldId, value) => {
         setValues((currentValues) => {
             currentValues[fieldId] = value;
             currentValues["post-type"] = props.type;
+            currentValues["created-at"] = datetime;
             return currentValues;
         });
     };
     
 
     let post_id = getPostId(props);
-    const handleOnSubmits = async (e) => {
-        e.preventDefault();
-        for (let [key, value] of Object.entries(values)) {
-            let meta_key = key;
-            let meta_value = value;
-            axios.post(
-                'http://localhost:4000/posts/new-post',
-                { post_id, meta_key, meta_value })
-                .then(res => {
-                    if (res.status === 200)
-                        console.log('Post successfully created')
-                    else
-                        Promise.reject()
-                })
-                .catch(err => alert('Something went wrong'))
-        }
-        navigate('/dashboard/post?post='+post_id);
-
-    }
 
     return (
         <>
@@ -51,7 +38,10 @@ function NewPost(props) {
             <h1 className='content__heading-inline'>{'Add New ' + props.title}</h1>
             <div className='content__post-wrapper'>
                 <div className='content__post-container'>
-                    <form name="post" id="post" onSubmit={handleOnSubmits}>
+                    <form name="post" id="post">
+                        <div className='content__post-message'>
+                            <p className='content__post-message-val'>Post Updated.</p>
+                        </div>
                         <div className='content__post-section-1'>
                             <div className='content__post-header'>
                                 <label>Title</label>
@@ -62,7 +52,7 @@ function NewPost(props) {
                                 />
                             </div>
                         </div>
-                        <FormSubmit type='new' values={values} post_id={post_id} post_type={props.type}/>
+                        <FormSubmit type='new' values={values} post_id={post_id} post_type={props.type} post_title={props.title}/>
                         
 
                         {

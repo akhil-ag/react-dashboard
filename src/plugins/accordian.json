@@ -19,25 +19,30 @@
                         "type": "text"
                     },
                     {
-                        "id": "label1",
-                        "name": "Label",
-                        "type": "text-area"
-                    }
-                ]
-            },
-            {
-                "title": "Acc",
-                "id": "content-section",
-                "fields": [
-                    {
-                        "id": "acc-titl",
-                        "name": "Accordian Title",
-                        "type": "text"
-                    },
-                    {
-                        "id": "labe1",
-                        "name": "Labe",
-                        "type": "text-area"
+                        "id": "accordian_list",
+                        "name": "Accordian Item",
+                        "type": "group",
+                        "fields": [
+                            {
+                                "id": "label",
+                                "name": "Label",
+                                "type": "text"
+                            },
+                            {
+                                "id": "content",
+                                "name": "Content",
+                                "type": "wysiwyg",
+                                "options":[
+                                    {
+                                        "tinymce":[
+                                            {
+                                                "toolbar1": "subscript, superscript, bold, italic"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }

@@ -28,16 +28,13 @@ function Post(props) {
         })
     }, [formValues]);
 
-
-    // console.log(values)
-
-
     const fieldChanged = (fieldId, value) => {
         setValues((currentValues) => {
             currentValues[fieldId] = value;
             currentValues["post-type"] = post_type;
             return currentValues;
         });
+        // console.log(values)
     };
 
     return (
@@ -50,9 +47,11 @@ function Post(props) {
             <div className='content__post-wrapper'>
                 <div className='content__post-container'>
                     <form name="post" id="post" >
+                        <div className='content__post-message'>
+                            <p className='content__post-message-val'>Post Updated.</p>
+                        </div>
                         <div className='content__post-section-1'>
                             <div className='content__post-header'>
-                                <label>Title</label>
                                 <input type='text' name='post-title' id='post-title' defaultValue={values['post-title']}
                                     onChange={(e) => {
                                         fieldChanged(e.target.id, e.target.value);
@@ -60,7 +59,7 @@ function Post(props) {
                                 />
                             </div>
                         </div>
-                        <FormSubmit type='update' values={values} post_id={post_id} post_type={post_type}/>
+                        <FormSubmit type='update' values={values} post_id={post_id} post_type={post_type} post_title={postTitle}/>
 
 
                         {

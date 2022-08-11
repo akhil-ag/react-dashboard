@@ -29,7 +29,7 @@ export default function Header(){
 							<a 
 							href='https://sc.com/sg'>
 								<Icons title="dashicons:admin-home" class="dashboard-header" />
-								Standard Chartered Singapore
+								React Dashboard
 							</a>
 						</li>
 						<li>

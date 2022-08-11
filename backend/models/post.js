@@ -16,4 +16,5 @@ let postSchema = new Schema({
     collection: 'postmetas'
   })
   
+  postSchema.set('versionKey', false);
 module.exports = mongoose.model('postmetas', postSchema)

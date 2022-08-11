@@ -9,6 +9,24 @@
         padding: 0;
     }
 
+    &__post-message {
+        visibility: hidden;
+        padding-right: 38px;
+        position: relative;
+        margin: 5px 0 15px;
+        background: #fff;
+        border: 1px solid #c3c4c7;
+        border-left-width: 4px;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+        padding: 1px 12px;
+        border-left-color: #00a32a;
+
+    & p{
+        margin: 0.5em 0;
+        padding: 2px;
+    }
+    }
+
     &__post-section-1 {
         margin-bottom: 20px;
         width: 100%;

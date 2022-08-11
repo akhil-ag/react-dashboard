@@ -3,7 +3,11 @@ import classnames from 'classnames';
 import { usePagination } from './usePagination';
 import Icons from '../../atoms/icons';
 import './index.scss'
+import getPostType from '../../../resources/js/getPostType';
+import { useEffect } from 'react';
 const Pagination = props => {
+    
+
     const {
         onPageChange,
         totalCount,
@@ -19,6 +23,11 @@ const Pagination = props => {
         siblingCount,
         pageSize
     });
+
+    const postType = getPostType();
+     useEffect(() =>{
+        onPageChange(1);
+    },[postType])
 
     // If there are less than 2 times in pagination range we shall not render the component
     if (currentPage === 0 || paginationRange.length < 2) {

@@ -81,36 +81,22 @@ export const getPostFields = (props) => {
     const [myJson, setMyJson] = useState([]);
     useEffect(() => {
         if(props){
-            const files = import.meta.globEager("../../plugins/*.json");
-            const modules = {};
-            for (const key in files) {
-                if(key == '../../plugins/'+props+'.json'){
-                    modules[key.replace(/(\.\/|\.json)/g, "")] = files[key].default;
-                    setMyJson(files[key].default)
-                }     
+        fetch('../../../src/plugins/' + props + '.json'
+            , {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
             }
+        )
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                setMyJson(myJson)
+            })
         }
-
-
-
-        // fetch('/src/plugins/' + props + '.json'
-        //     , {
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Accept': 'application/json'
-        //         }
-        //     }
-        // )
-        //     .then(function (response) {
-        //         return response.json();
-        //     })
-        //     .then(function (myJson) {
-        //         setMyJson(myJson)
-        //     })
-        // }
-        
     }, [props])
-    console.log(myJson)
     return myJson
 
 }

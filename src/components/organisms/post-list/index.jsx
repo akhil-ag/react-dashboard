@@ -8,7 +8,7 @@ import Icons from '../../atoms/icons'
 import axios from 'axios'
 import { getPostData } from './values'
 
-let PageSize = 4;
+let PageSize = 10;
 function Edit(props) {
     let postMeta = getPostData(props.type)
     postMeta.sort(function (a, b) {
@@ -34,15 +34,19 @@ function Edit(props) {
         }
         
     }
-    console.log(postData)
+    // console.log(postData)
 
     const [currentPage, setCurrentPage] = useState(1);
+
+    // useEffect(() =>{
+    //     setCurrentPage(1);
+    // },[1])
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         return postData.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, postData]);
+    }, [currentPage, postData, props]);
 
     return (
         <>
@@ -54,7 +58,7 @@ function Edit(props) {
             <hr></hr>
             <ul className='content__filter-buttons'>
                 <li>
-                    <Link to="/dashboard/edit?post_type=accordian&all_posts=1">All <span >(39)</span></Link> |
+                    <Link to="/dashboard/edit?post_type=accordian&all_posts=1">All <span >({postCount + 1})</span></Link> |
                 </li>
                 <li>
                     <Link to="/dashboard/edit?post_type=accordian&all_posts=1">Mine <span >(3)</span></Link> |
